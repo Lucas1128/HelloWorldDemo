@@ -15,7 +15,7 @@ public:
     HelloWorldDemo()
     {
 
-        addAndMakeVisible(numberLabel);
+        /*addAndMakeVisible(numberLabel);
         addAndMakeVisible(numberLabel2);
         addAndMakeVisible(numberLabel3);
         addAndMakeVisible(numberLabel4);
@@ -37,24 +37,24 @@ public:
         numberLabel8.setText ("8", dontSendNotification);
         numberLabel9.setText ("9", dontSendNotification);
        
-        OrangeText.setText("Make Me Orange!", dontSendNotification);
+        OrangeText.setText("Make Me Orange!", dontSendNotification);*/
 
-        /*
-        for (int i = 0; i < 9; ++i)
+ 
+        for (int i = 0; i < 10; ++i)
         {
-            auto newLabel = new Label({}, "NumberLabel" + String(i));
-            addAndMakeVisible(newLabel);
-            newLabel->setText(String(i), dontSendNotification);
+            labelVector.push_back (std::make_unique<Label> ( "NumberLabel" + String(i)));
+            addAndMakeVisible (labelVector.back().get());
+            labelVector.back()->setText (String(i), dontSendNotification);
         }
-        */
-
+      
+        /*
         addAndMakeVisible(colorButton);
 
         colorButton.onClick = [this]
         {
             OrangeText.setColour(Label::textColourId, Colours::orange);
         };
-
+        */
         setSize(600, 300);
     }
 
@@ -62,6 +62,7 @@ public:
 
     void resized() override
     {
+        /*
         int numbercount = 9;
         numberLabel.setBounds((getWidth() * 1 / (numbercount + 2)), 25, 50, 50);
         numberLabel2.setBounds((getWidth() * 2 / (numbercount + 2)), 25, 50, 50);
@@ -77,19 +78,22 @@ public:
 
         colorButton.setBounds(getWidth() - 176, getHeight() - 60, 120, 32);
 
-        
-        /*
-        for (int i = 0; i < 9; ++i)
-        {
-            auto newLabel = new Label({}, "NumberLabel" + String(i));
-            newLabel.setBounds(50, (50 * i), 50, 50);
-        }
         */
+        
+        int numbercount = 9;
+
+        for (int i = 0; i < 10; ++i)
+        {
+            labelVector[i]->setBounds ((getWidth() * i / (numbercount + 2)), 50, 50, 50);
+        }
+       
+        
     }
 private:
     //==============================================================================
     TextButton colorButton{ TRANS("Click Here") };
 
+    /*
     Label numberLabel;
     Label numberLabel2;
     Label numberLabel3;
@@ -99,6 +103,9 @@ private:
     Label numberLabel7;
     Label numberLabel8;
     Label numberLabel9;
+    */
+
+    std::vector<std::unique_ptr<Label>> labelVector;
 
     Label OrangeText;
 
