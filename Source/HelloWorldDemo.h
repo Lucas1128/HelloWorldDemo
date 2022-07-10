@@ -13,48 +13,101 @@ class HelloWorldDemo : public Component
 public:
     //==============================================================================
     HelloWorldDemo()
-    {
-
-        /*addAndMakeVisible(numberLabel);
-        addAndMakeVisible(numberLabel2);
-        addAndMakeVisible(numberLabel3);
-        addAndMakeVisible(numberLabel4);
-        addAndMakeVisible(numberLabel5);
-        addAndMakeVisible(numberLabel6);
-        addAndMakeVisible(numberLabel7);
-        addAndMakeVisible(numberLabel8);
-        addAndMakeVisible(numberLabel9);
-
-        addAndMakeVisible(OrangeText);
-
-        numberLabel.setText ("1", dontSendNotification);
-        numberLabel2.setText ("2", dontSendNotification);
-        numberLabel3.setText ("3", dontSendNotification);
-        numberLabel4.setText ("4", dontSendNotification);
-        numberLabel5.setText ("5", dontSendNotification);
-        numberLabel6.setText ("6", dontSendNotification);
-        numberLabel7.setText ("7", dontSendNotification);
-        numberLabel8.setText ("8", dontSendNotification);
-        numberLabel9.setText ("9", dontSendNotification);
-       
-        OrangeText.setText("Make Me Orange!", dontSendNotification);*/
-
- 
-        for (int i = 0; i < 10; ++i)
+    { 
+        /*
+        for (int i = 1; i < 10; ++i)
         {
             labelVector.push_back (std::make_unique<Label> ( "NumberLabel" + String(i)));
             addAndMakeVisible (labelVector.back().get());
-            labelVector.back()->setText (String(i), dontSendNotification);
-        }
-      
-        /*
-        addAndMakeVisible(colorButton);
+            labelVector.back()->setText (String(i + 1), dontSendNotification);
+        }*/
 
-        colorButton.onClick = [this]
+        for (int i = 0; i < 9; ++i)
+        {
+            ButtonVector.push_back(std::make_unique<TextButton>(String(i + 1)));
+            addAndMakeVisible(ButtonVector.back().get());
+            if (i == 0)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::red);
+                };
+            }
+            else if (i == 1)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::orange);
+                };
+            }
+            else if (i == 2)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::yellow);
+                };
+            }
+            else if (i == 3)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::green);
+                };
+            }
+            else if (i == 4)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::blue);
+                };
+            }
+            else if (i == 5)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::indigo);
+                };
+            }
+            else if (i == 6)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::violet);
+                };
+            }
+            else if (i == 7)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::orange);
+                };
+            }
+            else if (i == 8)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::brown);
+                };
+            }
+            else if (i == 9)
+            {
+                ButtonVector[i]->onClick = [this]
+                {
+                    OrangeText.setColour(Label::textColourId, Colours::white);
+                };
+            }
+
+        }
+
+        OrangeText.setText ("Change My Colour", dontSendNotification);
+        //addAndMakeVisible (colorButton);
+        addAndMakeVisible (OrangeText);
+
+        /*colorButton.onClick = [this]
         {
             OrangeText.setColour(Label::textColourId, Colours::orange);
-        };
-        */
+        };*/
+
         setSize(600, 300);
     }
 
@@ -62,50 +115,26 @@ public:
 
     void resized() override
     {
-        /*
-        int numbercount = 9;
-        numberLabel.setBounds((getWidth() * 1 / (numbercount + 2)), 25, 50, 50);
-        numberLabel2.setBounds((getWidth() * 2 / (numbercount + 2)), 25, 50, 50);
-        numberLabel3.setBounds((getWidth() * 3 / (numbercount + 2)), 25, 50, 50);
-        numberLabel4.setBounds((getWidth() * 4 / (numbercount + 2)), 25, 50, 50);
-        numberLabel5.setBounds((getWidth() * 5 / (numbercount + 2)), 25, 50, 50);
-        numberLabel6.setBounds((getWidth() * 6 / (numbercount + 2)), 25, 50, 50);
-        numberLabel7.setBounds((getWidth() * 7 / (numbercount + 2)), 25, 50, 50);
-        numberLabel8.setBounds((getWidth() * 8 / (numbercount + 2)), 25, 50, 50);
-        numberLabel9.setBounds((getWidth() * 9 / (numbercount + 2)), 25, 50, 50);
+        OrangeText.setBounds((getWidth() - 100) / 2, getHeight() - 100, 120, 32);
 
-        OrangeText.setBounds(getWidth() - 300, getHeight() - 60, 120, 32);
+        //colorButton.setBounds(getWidth() - 176, getHeight() - 60, 120, 32);
 
-        colorButton.setBounds(getWidth() - 176, getHeight() - 60, 120, 32);
-
-        */
+     
         
         int numbercount = 9;
 
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 9; ++i)
         {
-            labelVector[i]->setBounds ((getWidth() * i / (numbercount + 2)), 50, 50, 50);
-        }
-       
+            ButtonVector[i]->setBounds ((getWidth() * (i + 1) / (numbercount + 2)), 50, 50, 50);
+        }       
         
     }
 private:
     //==============================================================================
-    TextButton colorButton{ TRANS("Click Here") };
-
-    /*
-    Label numberLabel;
-    Label numberLabel2;
-    Label numberLabel3;
-    Label numberLabel4;
-    Label numberLabel5;
-    Label numberLabel6;
-    Label numberLabel7;
-    Label numberLabel8;
-    Label numberLabel9;
-    */
+    //TextButton colorButton{ TRANS("Click Here") };
 
     std::vector<std::unique_ptr<Label>> labelVector;
+    std::vector<std::unique_ptr<TextButton>> ButtonVector;
 
     Label OrangeText;
 
