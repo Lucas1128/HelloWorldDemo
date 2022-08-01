@@ -10,6 +10,10 @@
       <FILE id="cELZLK" name="HelloWorldDemo.h" compile="0" resource="0"
             file="Source/HelloWorldDemo.h"/>
     </GROUP>
+    <FILE id="jZDHa9" name="numberComponent.cpp" compile="1" resource="0"
+          file="Source/numberComponent.cpp"/>
+    <FILE id="yIInME" name="numberComponent.h" compile="0" resource="0"
+          file="Source/numberComponent.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
